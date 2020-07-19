@@ -1,0 +1,88 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <title>Manual Slider</title>
+  </head>
+  <style>
+    body {
+      text-align: center;
+    }
+    h2 {
+      margin: 40px auto;
+    }
+    img {
+      cursor: pointer;
+    }
+    img:nth-of-type(1) {
+      position: absolute;
+      left: 30%;
+      top: 20%;
+    }
+    div {
+      width: 30%;
+      height: auto;
+      margin: auto;
+      text-align: justify;
+    }
+    img:nth-of-type(2) {
+      position: absolute;
+      right: 30%;
+      top: 20%;
+    }
+  </style>
+  <body>
+    <h2>Manual Slider</h2>
+    <img
+      src="./Arrow_Left.png"
+      alt="arrowLeft"
+      height="50"
+      width="50"
+      id="img1"
+    />
+    <div></div>
+    <img
+      src="./Arrow_Right.png"
+      alt="arrowRight"
+      height="50"
+      width="50"
+      id="img2"
+    />
+  </body>
+  <script>
+    const p1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Praesent ut ultricies nulla. Duis a tincidunt libero. Nam malesuada lacus nunc,
+        eu vulputate dolor pulvinar non. Etiam sed volutpat sapien, non fringilla arcu.
+        Integer quis metus vulputate, condimentum magna vel, auctor eros.`;
+    const p2 = `Integer orci orci, consequat vitae neque nec, porttitor placerat purus.
+        Pellentesque id elit at quam suscipit consequat. Aliquam sed vestibulum velit, in fringilla ex.
+        Fusce elementum elit id nulla lacinia consectetur. Nullam ipsum sem, tincidunt at auctor ac,
+        maximus vitae enim. Etiam semper sagittis lectus, ut consequat odio molestie venenatis. `;
+    const p3 = `Donec vel pulvinar mi, vel gravida libero. Cras rutrum, ex id molestie pulvinar,
+        dui purus ultricies mauris, a tincidunt arcu ligula sagittis quam. Phasellus facilisis
+        tempor nulla quis ultricies. Praesent ut est eu magna varius tristique dapibus non mauris.
+        Sed a tellus iaculis, ultricies urna vitae, finibus dui.`;
+
+    const paragraphs = [];
+    paragraphs.push(p1);
+    paragraphs.push(p2);
+    paragraphs.push(p3);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector("div").innerHTML = paragraphs[0];
+
+      let slideIndex = 0;
+
+      document.querySelector("#img2").onclick = () => {
+        slideIndex++;
+        if (slideIndex > paragraphs.length - 1) slideIndex = 0;
+        document.querySelector("div").innerHTML = paragraphs[slideIndex];
+      };
+
+      document.querySelector("#img1").onclick = () => {
+        slideIndex--;
+        if (slideIndex < 0) slideIndex = paragraphs.length - 1;
+        document.querySelector("div").innerHTML = paragraphs[slideIndex];
+      };
+    });
+  </script>
+</html>
